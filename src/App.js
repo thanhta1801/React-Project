@@ -1,5 +1,5 @@
 // import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
 import React from "react";
 import MyComponent from "./components/MyComponent";
 // import { useDispatch, useSelector } from "react-redux";
