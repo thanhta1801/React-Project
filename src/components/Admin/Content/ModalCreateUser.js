@@ -3,22 +3,64 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import { FcPlus } from "react-icons/fc";
+import { toast } from "react-toastify";
+import { postCreateNewUser } from "../../../Services/apiServices";
+
+//////
 const ModalCreateUser = () => {
   const [show, setShow] = useState(false);
   /////////
   const [email, setEmail] = useState("");
   const [passWord, setPassWord] = useState("");
   const [userName, setUserName] = useState("");
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("USER");
   const [image, setImage] = useState("");
   const [previewImage, setpreviewImage] = useState("");
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false);
+    setEmail("");
+    setPassWord("");
+    setUserName("");
+    setRole("");
+    setImage("");
+    setpreviewImage("");
+  };
   const handleShow = () => setShow(true);
 
   const handleUpLoadImage = (e) => {
     if (e.target && e.target.files && e.target.files[0]) {
       setpreviewImage(URL.createObjectURL(e.target.files[0]));
+      setImage(e.target.files[0]);
+    }
+  };
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
+  const handleSubmitCreateUser = async () => {
+    /// validate
+    const isValidEmail = validateEmail(email);
+    if (!isValidEmail) {
+      toast.error("Email không hợp lệ");
+      return;
+    }
+    if (!passWord || !userName) {
+      toast.error("Bạn chưa nhập");
+      return;
+    }
+    /// call API
+    let data = await postCreateNewUser(email, passWord, userName, role, image);
+    console.log(">> check res", data);
+    if (data && data.EC === 0) {
+      toast.success(data.EM);
+      // handleClose()
+    }
+    if (data && data.EC !== 0) {
+      toast.error(data.EM);
     }
   };
   return (
@@ -70,6 +112,7 @@ const ModalCreateUser = () => {
               <label className="form-label">Role</label>
               <select
                 className="form-select"
+                value={role}
                 onChange={(e) => setRole(e.target.value)}
               >
                 <option value="USER">USER</option>
@@ -101,7 +144,7 @@ const ModalCreateUser = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
             Save
           </Button>
         </Modal.Footer>

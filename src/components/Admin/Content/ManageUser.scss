@@ -5,7 +5,9 @@
         font-weight: bold;
     }
 
-    .users-content {}
+    .users-content {
+        margin: 0px 20px;
+    }
 }
 
 .modal-add-user {
@@ -18,7 +20,8 @@
         border-radius: 5px;
         padding: 5px 10px;
         cursor: pointer;
-        &:hover{
+
+        &:hover {
             background-color: #dcdcdc;
         }
 
