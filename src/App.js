@@ -12,7 +12,6 @@ const App = () => {
       </div>
       <div className="main-container">
         <div className="sider-container"></div>
-        <div>Trang chủ</div>
         <div className="app-content">
           <Outlet />
         </div>
