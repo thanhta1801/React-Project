@@ -8,9 +8,13 @@ import {
   SidebarFooter,
   SidebarContent,
 } from "react-pro-sidebar";
-import { FaTachometerAlt, FaGem, FaGithub, FaRegLaughWink, } from 'react-icons/fa';
+import { DiReact } from "react-icons/di";
+import { FaTachometerAlt, FaGem, FaGithub } from "react-icons/fa";
 import sidebarBg from "../../assets/bg2.jpg";
-const SidebarAdmin = ({ image, collapsed, toggled, handleToggleSidebar }) => {
+import "./SideBarAdmin.scss";
+import { NavLink } from "react-router-dom";
+
+const SidebarAdmin = ({ collapsed, toggled, handleToggleSidebar }) => {
   return (
     <div>
       <ProSidebar
@@ -33,28 +37,26 @@ const SidebarAdmin = ({ image, collapsed, toggled, handleToggleSidebar }) => {
               whiteSpace: "nowrap",
             }}
           >
+            <DiReact size={"3rem"} color={"00bfff"} />
             Bài Kiểm Tra
           </div>
         </SidebarHeader>
 
         <SidebarContent>
           <Menu iconShape="circle">
-            <MenuItem
-              icon={<FaTachometerAlt />}
-              suffix={<span className="badge red">News</span>}
-            >
-              dashboard
+            <MenuItem icon={<FaTachometerAlt />}>
+              Dashboard
+              <NavLink to="/admins" />
             </MenuItem>
-            <MenuItem icon={<FaGem />}> components</MenuItem>
           </Menu>
           <Menu iconShape="circle">
-            <SubMenu
-              suffix={<span className="badge yellow">3</span>}
-              icon={<FaRegLaughWink />}
-            >
-              <MenuItem> 1</MenuItem>
-              <MenuItem> 2</MenuItem>
-              <MenuItem> 3</MenuItem>
+            <SubMenu icon={<FaGem />} title={"Tính Năng"}>
+              <MenuItem>
+                Quản lý Users
+                <NavLink to="/admins/manage-users" />
+              </MenuItem>
+              <MenuItem> Quản lý Bài Quiz</MenuItem>
+              <MenuItem> Quản lý Câu hỏi</MenuItem>
             </SubMenu>
           </Menu>
         </SidebarContent>
@@ -67,7 +69,7 @@ const SidebarAdmin = ({ image, collapsed, toggled, handleToggleSidebar }) => {
             }}
           >
             <a
-              href="https://github.com/azouaoui-med/react-pro-sidebar"
+              href="/"
               target="_blank"
               className="sidebar-btn"
               rel="noopener noreferrer"
@@ -80,7 +82,7 @@ const SidebarAdmin = ({ image, collapsed, toggled, handleToggleSidebar }) => {
                   overflow: "hidden",
                 }}
               >
-                viewSource
+                Thành Tạ
               </span>
             </a>
           </div>
