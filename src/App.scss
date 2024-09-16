@@ -7,16 +7,89 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 20px;
+
 }
 
 .app-container {
   .header-container {
-    .navbar-nav {
+    .btn-login {
+      border: 1px solid #535353;
+      border-radius: 5px;
+      padding: 8px 15px;
+      margin-right: 15px;
+    }
+
+    .btn-signup {
+      border-radius: 5px;
+      padding: 8px 15px;
+      margin-right: 15px;
+      background-color: #434242;
+      color: white;
+
+      &:hover {
+        background-color: black;
+      }
+    }
+
+    .navbar {
+      padding-top: 0px;
+      z-index: 10;
+      background-color: rgba(0, 0, 0, 0) !important;
+
       .nav-link {
         &.active {
           color: #00bfff;
         }
       }
     }
+  }
+
+  .homepage-content {
+    padding: 100px;
+    width: 50%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    .homepage-title {
+      font-size: 50px;
+      font-weight: 600;
+    }
+
+    .homepage-text {
+      font-size: 25px;
+    }
+
+    .btn-content {
+      border-radius: 5px;
+      padding: 10px 20px;
+      background-color: #434242;
+      color: white;
+
+      &:hover {
+        background-color: black;
+      }
+    }
+  }
+}
+
+video {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+}
+
+
+@media (min-width: 1400px) {
+
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 1480px !important;
   }
 }
