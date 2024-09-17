@@ -23,14 +23,24 @@ const ListTableUsers = (props) => {
                   <td>{item.email}</td>
                   <td>{item.role}</td>
                   <td>
-                    <button className="btn btn-success ">View</button>
+                    <button
+                      className="btn btn-success "
+                      onClick={() => props.handleClickBtnView(item)}
+                    >
+                      View
+                    </button>
                     <button
                       className="btn btn-warning mx-3"
                       onClick={() => props.handleClickBtnUpdate(item)}
                     >
                       Updata
                     </button>
-                    <button className="btn btn-danger">Delete</button>
+                    <button
+                      className="btn btn-danger"
+                      onClick={() => props.handleDeleteUser(item)}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               );
