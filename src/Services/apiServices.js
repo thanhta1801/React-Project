@@ -16,6 +16,10 @@ const postCreateNewUser = (email, passWord, userName, role, image) => {
 const getAllUser = () => {
   return axios.get("api/v1/participant/all");
 };
+// gọi Api lấy all người dùng theo phân trang
+const getUserWithPaginate = (page, limmit) => {
+  return axios.get(`api/v1/participant?page=${page}&limit=${limmit}`);
+};
 
 /// goi API sửa tt người dùng
 const putUpdateUser = (id, userName, role, image) => {
@@ -32,4 +36,10 @@ const putUpdateUser = (id, userName, role, image) => {
 const DeleteUser = (userId) => {
   return axios.delete("api/v1/participant", { data: { id: userId } });
 };
-export { postCreateNewUser, getAllUser, putUpdateUser, DeleteUser };
+export {
+  postCreateNewUser,
+  getAllUser,
+  putUpdateUser,
+  DeleteUser,
+  getUserWithPaginate,
+};
