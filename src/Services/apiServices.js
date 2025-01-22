@@ -36,10 +36,21 @@ const putUpdateUser = (id, userName, role, image) => {
 const DeleteUser = (userId) => {
   return axios.delete("api/v1/participant", { data: { id: userId } });
 };
+
+/// gọi Api đăng nhập
+const postLogin = (email, password) => {
+  return axios.post("api/v1/login", { email, password });
+};
+/// goi API đăng kí
+const postRegister = (email, password, userName) => {
+  return axios.post("api/v1/register", { email, password, userName });
+};
 export {
   postCreateNewUser,
   getAllUser,
   putUpdateUser,
   DeleteUser,
   getUserWithPaginate,
+  postLogin,
+  postRegister,
 };

@@ -33,7 +33,7 @@ const ListTableUsers = (props) => {
                       className="btn btn-warning mx-3"
                       onClick={() => props.handleClickBtnUpdate(item)}
                     >
-                      Updata
+                      Updata New
                     </button>
                     <button
                       className="btn btn-danger"

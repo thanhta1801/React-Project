@@ -77,7 +77,7 @@ const SidebarAdmin = ({ collapsed, toggled, handleToggleSidebar }) => {
               <FaGithub />
               <span
                 style={{
-                  whiteSpace: "nowrap",
+                  whiteSpace: "nowrap", 
                   textOverflow: "ellipsis",
                   overflow: "hidden",
                 }}
@@ -91,4 +91,4 @@ const SidebarAdmin = ({ collapsed, toggled, handleToggleSidebar }) => {
     </div>
   );
 };
-export default SidebarAdmin;
+export default SidebarAdmin; 

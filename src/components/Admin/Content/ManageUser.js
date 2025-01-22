@@ -13,6 +13,7 @@ const ManageUser = (props) => {
   const LIMIT_USER = 3;
   const [showUpdateUser, setShowUpdateUser] = useState(false);
   const [showDeleteUser, setShowDeleteUser] = useState(false);
+  const [showView, setShowView] = useState(false);
   const [listUsers, setListUsers] = useState([]);
   const [dataUserUpdate, setDataUserUpdate] = useState({});
   const [dataUserDelete, setDataUserDelete] = useState({});
@@ -49,7 +50,7 @@ const ManageUser = (props) => {
   };
 
   const handleClickBtnView = (dataUser) => {
-    setShowUpdateUser(true);
+    setShowView(true);
     setDataUserUpdate(dataUser);
   };
 
@@ -81,8 +82,8 @@ const ManageUser = (props) => {
           setCurrentPage={setCurrentPage}
         />
         <ModalViewUser
-          show={showUpdateUser}
-          setShow={setShowUpdateUser}
+          show={showView}
+          setShow={setShowView}
           dataUserUpdate={dataUserUpdate}
           resetUpdateData={resetUpdateData}
         />
